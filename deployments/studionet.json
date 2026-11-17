@@ -1,0 +1,176 @@
+{
+  "network": "studionet",
+  "chain_id": 61999,
+  "contract": "0xeFB33e9D031A02C636238285e16A0f01cfa80994",
+  "explorer": "https://explorer-studio.genlayer.com/address/0xeFB33e9D031A02C636238285e16A0f01cfa80994",
+  "source_sha256": "a4e53844e69259f48c5d33e34577fe6f32c5cbd364e4b3190b8a24cbfc89f121",
+  "constructor": {},
+  "accounts": {
+    "brand": "0x363Bfe27A806D749e8b2Dc58c4de6D278662Cd6E",
+    "creator": "0x96374a72BC60BbB44f6dA12AcbcfE5650B78690A",
+    "stranger": "0xf84af2de155E51ab8F58fb9dE6165F5db241d25c"
+  },
+  "balances": {
+    "brand_before": "3700000000000000000",
+    "creator_before": "0",
+    "brand_after": "3900000000000000000",
+    "creator_after": "100000000000000000"
+  },
+  "owed": {
+    "brand": "200000000000000000",
+    "creator": "100000000000000000"
+  },
+  "held_after": "0",
+  "steps": [
+    {
+      "step": "deploy",
+      "method": "deploy",
+      "from": "0x363Bfe27A806D749e8b2Dc58c4de6D278662Cd6E",
+      "tx": "0xbb19c64e7de03c124d217722ae0b5fc0ab865b81a7d1f5e25381be9eed0b7456",
+      "status": "FINALIZED",
+      "ok": true,
+      "refusal": "",
+      "address": "0xeFB33e9D031A02C636238285e16A0f01cfa80994"
+    },
+    {
+      "step": "campaign 0 opened: a Fleetwise brief, 0.1 GEN fee paid in",
+      "method": "open",
+      "from": "0x363Bfe27A806D749e8b2Dc58c4de6D278662Cd6E",
+      "tx": "0x63cfcdcfe7918a5ed836d67803af7fc1d411a9e1e816b53ca501fb497f82ca5e",
+      "status": "ACCEPTED",
+      "ok": true,
+      "refusal": ""
+    },
+    {
+      "step": "the brand submits on its own campaign",
+      "method": "submit",
+      "from": "0x363Bfe27A806D749e8b2Dc58c4de6D278662Cd6E",
+      "tx": "0x6f980a4c1a329b16c230ab736ecf3381ab1ae0f2079cf10fad272ce47ccb7f5a",
+      "status": "ACCEPTED",
+      "ok": false,
+      "refusal": "[EXPECTED] only the named creator may submit"
+    },
+    {
+      "step": "campaign 0: the real Fleetwise post is fetched and judged",
+      "method": "submit",
+      "from": "0x96374a72BC60BbB44f6dA12AcbcfE5650B78690A",
+      "tx": "0x0fb921d4b99fc4c16ebdbf996a999a71162820abe92d7c0dc0ba0f13e92c72b1",
+      "status": "ACCEPTED",
+      "ok": true,
+      "refusal": ""
+    },
+    {
+      "step": "a second submission on a settled campaign",
+      "method": "submit",
+      "from": "0x96374a72BC60BbB44f6dA12AcbcfE5650B78690A",
+      "tx": "0x675104e5386484df16313980633633f154b39939ac009005a7206f244b9e15dd",
+      "status": "ACCEPTED",
+      "ok": false,
+      "refusal": "[EXPECTED] this campaign is paid; only an open one takes a submission"
+    },
+    {
+      "step": "campaign 1 opened: the same brief, a different post coming",
+      "method": "open",
+      "from": "0x363Bfe27A806D749e8b2Dc58c4de6D278662Cd6E",
+      "tx": "0x4ad118d935336b90ef6036ed35f1a78d82cbcc4d96011779bf71a4f9f609f2ff",
+      "status": "ACCEPTED",
+      "ok": true,
+      "refusal": ""
+    },
+    {
+      "step": "campaign 1: a real but off-topic post is fetched and judged",
+      "method": "submit",
+      "from": "0x96374a72BC60BbB44f6dA12AcbcfE5650B78690A",
+      "tx": "0xf76fe5f5ed1374fad6d3463e970e39f49e588e90d691b7082d75c31783f1044b",
+      "status": "ACCEPTED",
+      "ok": true,
+      "refusal": ""
+    },
+    {
+      "step": "campaign 2 opened: nobody will ever submit",
+      "method": "open",
+      "from": "0x363Bfe27A806D749e8b2Dc58c4de6D278662Cd6E",
+      "tx": "0x807ddcdeca819747c3c0e3f1bbd4951237c0e57dafd9719d68fd89063104ebca",
+      "status": "ACCEPTED",
+      "ok": true,
+      "refusal": ""
+    },
+    {
+      "step": "a settlement while campaign 2 is still open",
+      "method": "settle",
+      "from": "0xf84af2de155E51ab8F58fb9dE6165F5db241d25c",
+      "tx": "0xea68aa3764bc3af66ead4d9d48979a9a0e8ef59677fff496be4dd8a353013567",
+      "status": "ACCEPTED",
+      "ok": false,
+      "refusal": "[EXPECTED] the campaign is open until 2026-11-17T17:44:24Z"
+    },
+    {
+      "step": "a submission after campaign 2's deadline",
+      "method": "submit",
+      "from": "0x96374a72BC60BbB44f6dA12AcbcfE5650B78690A",
+      "tx": "0x1ae373eecfd8fc10b21c231f0c6a55d507a16691b2c57ac1de60bbee492042c0",
+      "status": "ACCEPTED",
+      "ok": false,
+      "refusal": "[EXPECTED] the deadline passed at 2026-11-17T17:44:24Z; a late submission is never read"
+    },
+    {
+      "step": "campaign 2 settled: nobody submitted, the fee returns to the brand",
+      "method": "settle",
+      "from": "0xf84af2de155E51ab8F58fb9dE6165F5db241d25c",
+      "tx": "0x3157bb713b569bde2ea06f1f61c5cda09bfdd70777d359957c5b4ee64c87a447",
+      "status": "ACCEPTED",
+      "ok": true,
+      "refusal": ""
+    }
+  ],
+  "campaigns": [
+    {
+      "brand": "0x363Bfe27A806D749e8b2Dc58c4de6D278662Cd6E",
+      "brief": "The published post must be about a fleet of delivery vehicles, must mention the product name 'Fleetwise' at least once, and must say that it integrates with GPS tracking hardware already installed in the vehicles. A post that does not mention Fleetwise, or does not describe GPS integration, does not meet the brief.",
+      "creator": "0x96374a72BC60BbB44f6dA12AcbcfE5650B78690A",
+      "deadline": "2026-11-17T17:42:15Z",
+      "fee": "100000000000000000",
+      "opened_at": "2026-11-17T17:22:15Z",
+      "paid_to": "creator",
+      "reason_is_leader_supplied": true,
+      "settled_at": "2026-11-17T17:22:45Z",
+      "status": "paid",
+      "title": "Guest post: a week with Fleetwise",
+      "url": "https://raw.githubusercontent.com/meitipro/guestpost/master/demo/posts/accepted.md",
+      "verdict": "meets",
+      "why": "The post discusses a delivery fleet, mentions 'Fleetwise' multiple times, and explicitly states it integrates with existing GPS tracking har"
+    },
+    {
+      "brand": "0x363Bfe27A806D749e8b2Dc58c4de6D278662Cd6E",
+      "brief": "The published post must be about a fleet of delivery vehicles, must mention the product name 'Fleetwise' at least once, and must say that it integrates with GPS tracking hardware already installed in the vehicles. A post that does not mention Fleetwise, or does not describe GPS integration, does not meet the brief.",
+      "creator": "0x96374a72BC60BbB44f6dA12AcbcfE5650B78690A",
+      "deadline": "2026-11-17T17:43:22Z",
+      "fee": "100000000000000000",
+      "opened_at": "2026-11-17T17:23:22Z",
+      "paid_to": "brand",
+      "reason_is_leader_supplied": true,
+      "settled_at": "2026-11-17T17:23:38Z",
+      "status": "refunded",
+      "title": "Guest post: anything about Fleetwise",
+      "url": "https://raw.githubusercontent.com/meitipro/guestpost/master/demo/posts/off_topic.md",
+      "verdict": "does_not_meet",
+      "why": "Page is a lentil soup recipe; it does not mention Fleetwise, delivery fleet, or GPS integration."
+    },
+    {
+      "brand": "0x363Bfe27A806D749e8b2Dc58c4de6D278662Cd6E",
+      "brief": "The published post must be about a fleet of delivery vehicles, must mention the product name 'Fleetwise' at least once, and must say that it integrates with GPS tracking hardware already installed in the vehicles. A post that does not mention Fleetwise, or does not describe GPS integration, does not meet the brief.",
+      "creator": "0x96374a72BC60BbB44f6dA12AcbcfE5650B78690A",
+      "deadline": "2026-11-17T17:44:24Z",
+      "fee": "100000000000000000",
+      "opened_at": "2026-11-17T17:24:24Z",
+      "paid_to": "brand",
+      "reason_is_leader_supplied": true,
+      "settled_at": "2026-11-17T17:45:07Z",
+      "status": "refunded",
+      "title": "Guest post: anything about Fleetwise",
+      "url": "",
+      "verdict": "",
+      "why": ""
+    }
+  ]
+}

@@ -76,13 +76,13 @@ def main():
             if left > 0:
                 print(f"  waiting {int(left)}s for campaign {cid}'s deadline")
                 time.sleep(left)
-        if i == last_open:
-            # Every campaign is open now; nothing further pays the brand back
-            # until a submit or a settle, so this is the last safe point to
-            # snapshot its balance before any refund could land.
-            before["brand"] = s.balance(who["brand"].address)
         args = [who[a].address if a in who else a for a in spec]
         s.write(who[actor], address, method, args, value=value, step=label, expect=expect)
+        if i == last_open:
+            # Every campaign is open now, every fee is paid in, and nothing
+            # further pays the brand back until a submit or a settle: the
+            # right point to snapshot its balance.
+            before["brand"] = s.balance(who["brand"].address)
 
     n = int(s.read(address, "count"))
     campaigns = [s.read(address, "campaign", [k]) for k in range(n)]
